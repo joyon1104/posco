@@ -1,0 +1,28 @@
+1. 터미널에 나눔글꼴 설치
+ sudo apt-get install fonts-nanum*
+
+2. 글꼴 nanum 설치되었나 확인
+터미널에 입력
+ ls -l /usr/share/fonts/truetype/
+[결과]
+drwxr-xr-x 2 root root 4096 Aug  7 05:17 nanum/ <-이렇게 끝에 nanum 있는 거 확인
+
+3. 한글 출력 확인
+주피터 노트북에 다음과 같이 실행
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import numpy as np
+
+data = np.random.randint(-100, 100, 50).cumsum()
+
+path = '/usr/share/fonts/truetype/nanum/NanumMyeongjo.ttf'
+fontprop = fm.FontProperties(fname=path, size=18)
+
+plt.plot(range(50), data, 'r')
+plt.title('가격변동 추이', fontproperties=fontprop)
+plt.ylabel('가격', fontproperties=fontprop)
+plt.show()
+
+한글 잘 출력되나 확인.
+
+
